@@ -114,7 +114,7 @@ class _GameKeyboardState extends State<GameKeyboard> {
                         widget.game.letterId--;
                       });
                     }
-                  } else if (e == "SUBMIT") {
+                  } else if (e == "SUB") {
                     // setting the game rules
                     if (widget.game.letterId >= 5) {
                       /* widget.game.wordleBoard[widget.game.rowId].replaceRange(

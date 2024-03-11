@@ -7,6 +7,7 @@ import 'package:EmpoweringLearningEdventure/screens/gallery_screen/gallery_scree
 import 'package:EmpoweringLearningEdventure/screens/login_screen/login_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/my_profile/my_profile.dart';
 import 'package:EmpoweringLearningEdventure/screens/quiz_screen/quiz_screen.dart';
+import 'package:EmpoweringLearningEdventure/screens/color_screen/color_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/wordle_screen/game_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/video_screen/video_screen.dart';
 import 'package:flutter/material.dart';
@@ -179,7 +180,7 @@ class HomeScreen extends StatelessWidget {
                                 context, GameScreen.routeName);
                           },
                           icon: 'assets/icons/holiday.svg',
-                          title: 'Holidays',
+                          title: 'Wordle',
                         ),
                         HomeCard(
                           onPress: () {},
@@ -204,10 +205,10 @@ class HomeScreen extends StatelessWidget {
                         HomeCard(
                           onPress: () {
                             Navigator.pushNamed(
-                                context, DateSheetScreen.routeName);
+                                context, ColorScreen.routeName);
                           },
                           icon: 'assets/icons/datesheet.svg',
-                          title: 'DateSheet',
+                          title: 'Color Clash',
                         ),
 
                       ],

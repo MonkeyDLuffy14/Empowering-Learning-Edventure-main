@@ -1,3 +1,5 @@
+
+
 import 'package:EmpoweringLearningEdventure/change_password/change_password.dart';
 import 'package:EmpoweringLearningEdventure/screens/reset_password/reset_password.dart';
 import 'package:EmpoweringLearningEdventure/screens/gallery_screen/gallery_screen.dart';
@@ -6,6 +8,7 @@ import 'package:EmpoweringLearningEdventure/screens/login_screen/login_screen.da
 import 'package:EmpoweringLearningEdventure/screens/login_screen/teacher_login_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/notice_screen/notice_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/quiz_screen/quiz_screen.dart';
+import 'package:EmpoweringLearningEdventure/screens/color_screen/color_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/wordle_screen/game_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/role_selection/role_selection.dart';
 import 'package:EmpoweringLearningEdventure/screens/splash_screen/splash_screen.dart';
@@ -32,6 +35,7 @@ Map<String, WidgetBuilder> routes = {
   NoticeScreen.routeName: (context) => NoticeScreen(),
   GalleryScreen.routeName: (context) => GalleryScreen(),
   QuizScreen.routeName: (context) => QuizScreen(),
+  ColorScreen.routeName: (context) => ColorScreen(),
   GameScreen.routeName: (context) => GameScreen(),
   VideoScreen.routeName: (context) => VideoScreen(),
   ResetPasswordScreen.routeName: (context) => ResetPasswordScreen(),
