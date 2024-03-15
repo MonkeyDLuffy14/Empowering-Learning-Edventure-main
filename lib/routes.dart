@@ -7,7 +7,9 @@ import 'package:EmpoweringLearningEdventure/screens/home_screen/TeacherHomeScree
 import 'package:EmpoweringLearningEdventure/screens/login_screen/login_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/login_screen/teacher_login_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/notice_screen/notice_screen.dart';
+import 'package:EmpoweringLearningEdventure/screens/spelling_screen/spell_bee.dart';
 import 'package:EmpoweringLearningEdventure/screens/quiz_screen/quiz_screen.dart';
+import 'package:EmpoweringLearningEdventure/screens/memory_screen/memroy_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/color_screen/color_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/wordle_screen/game_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/role_selection/role_selection.dart';
@@ -33,8 +35,10 @@ Map<String, WidgetBuilder> routes = {
   TeacherLoginScreen.routeName: (context) => TeacherLoginScreen(),
   TeacherHomeScreen.routeName: (context) => TeacherHomeScreen(),
   NoticeScreen.routeName: (context) => NoticeScreen(),
+  SpellBee.routeName: (context) => SpellBee(),
   GalleryScreen.routeName: (context) => GalleryScreen(),
   QuizScreen.routeName: (context) => QuizScreen(),
+  MemoryScreen.routeName: (context) => MemoryScreen(),
   ColorScreen.routeName: (context) => ColorScreen(),
   GameScreen.routeName: (context) => GameScreen(),
   VideoScreen.routeName: (context) => VideoScreen(),

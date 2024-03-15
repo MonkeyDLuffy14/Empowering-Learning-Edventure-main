@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:telly/game_data.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:EmpoweringLearningEdventure/screens/home_screen/home_screen.dart';
@@ -30,7 +29,7 @@ class _GameState extends State<Game> {
   }
 
   @override
-  initState() {
+  void initState() {
     super.initState();
     gridSize = gameData.getGridSize();
     gameData.targetIndex = random.nextInt(pow(gridSize, 2).toInt() - 1);
@@ -78,14 +77,12 @@ class _GameState extends State<Game> {
   void continuePlaying() {
     setState(() {
       gameData.isPlaying = true;
-      // timeLeft = 10;
     });
     startTimer();
     nextLevel();
   }
 
   void nextColor() {
-    // Random random = Random();
     int r = random.nextInt(255);
     int g = random.nextInt(255);
     int b = random.nextInt(255);
@@ -101,7 +98,6 @@ class _GameState extends State<Game> {
       offset = 6;
     }
 
-    // Offset is always guaranteed to be exactly the same.
     int rOffset = minOffset + random.nextInt(offset);
     int gOffset = minOffset + random.nextInt(offset);
     int bOffset = minOffset + random.nextInt(offset);
@@ -116,62 +112,49 @@ class _GameState extends State<Game> {
     });
   }
 
-  // Avoid overflow when generating RGB colors
-  int normalize(int value, {int min = 0, int max = 255}) {
-    if (value < min) {
-      return min;
-    } else if (value > max) {
-      return max;
-    } else {
-      return (min + (value * (max - min) / max)).floor();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    // return SafeArea(
-
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text("Level: ${gameData.level}", style: TextStyle(fontSize: 40)),
-            Text("Score: ${gameData.score}", style: TextStyle(fontSize: 30)),
-            Text("Time left: $timeLeft", style: TextStyle(fontSize: 30)),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Flexible(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Level: ${gameData.level}", style: TextStyle(fontSize: 40)),
+              Text("Score: ${gameData.score}", style: TextStyle(fontSize: 30)),
+              Text("Time left: $timeLeft", style: TextStyle(fontSize: 30)),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
                 child: GridView.count(
-                  // primary: true,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   crossAxisCount: gridSize,
-                  // childAspectRatio: 1,
                   children: List.generate(pow(gridSize, 2) as int, (index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
-                          onTap: () {
-                            if (gameData.targetIndex == index) {
-                              nextLevel();
-                            } else {
-                              endGame();
-                            }
-                          },
-                          child: Ink(
-                            height: 50,
-                            width: 50,
-                            color: gameData.targetIndex == index
-                                ? targetColor
-                                : dummyColor,
-                          )),
+                        onTap: () {
+                          if (gameData.targetIndex == index) {
+                            nextLevel();
+                          } else {
+                            endGame();
+                          }
+                        },
+                        child: Ink(
+                          height: 50,
+                          width: 50,
+                          color: gameData.targetIndex == index
+                              ? targetColor
+                              : dummyColor,
+                        ),
+                      ),
                     );
                   }),
                 ),
               ),
-            ),
-          ]),
+            ],
+          ),
         ),
       ),
     );
@@ -179,59 +162,43 @@ class _GameState extends State<Game> {
 
   Future<void> gameOver() async {
     await showDialog(
-        context: context,
-        // barrierDismissible: false,
-        builder: (BuildContext context) {
-          return WillPopScope(
-            onWillPop: () async {
-              // Navigator.popUntil(context, ModalRoute.withName('/home'));
-              Navigator.pushReplacementNamed(context, '/home');
-              return false;
-            },
-            child: SimpleDialog(
-              title: const Center(
-                child: Text(
-                  'Game Over!',
-                  style: TextStyle(fontSize: 50),
-                ),
-              ),
-              children: [
-                SimpleDialogOption(
-                  onPressed: () {
-                    // Navigator.popUntil(context, ModalRoute.withName('/home'));
-                    // return true;
-                    // this.deactivate();}
-                    // Navigator.
-                    Navigator.pop(context, true);
-                    continuePlaying();
-                    // return true;
-                  },
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Continue ', style: TextStyle(fontSize: 30)),
-                        Icon(
-                          Icons.movie,
-                          size: 30,
-                        )
-                      ]),
-                ),
-//11-03-2024                // SimpleDialogOption(
-                //   onPressed: () {
-                //     Navigator.pushReplacementNamed(context, 'EmpoweringLearningEdventure/screens/home_screen/home_screen.dart');
-                //     // TODO: Black screen on popUntil
-                //     // Navigator.popUntil(context, ModalRoute.withName('/home'));
-                //     // Navigator.of(context, rootNavigator: true)
-                //     //     .popUntil(ModalRoute.withName('/home'));
-                //     // .pushNamed('/home');
-                //     // Navigator.pop(context);
-                //   },
-                //   child: const Center(
-                //       child: Text('Main menu', style: TextStyle(fontSize: 30))),
-                // ),
-              ],
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: const Center(
+            child: Text(
+              'Game Over!',
+              style: TextStyle(fontSize: 50),
             ),
-          );
-        });
+          ),
+          children: [
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.pop(context, true);
+                continuePlaying();
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text('Continue ', style: TextStyle(fontSize: 30)),
+                  Icon(
+                    Icons.movie,
+                    size: 30,
+                  )
+                ],
+              ),
+            ),
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.pushNamed(context, HomeScreen.routeName);
+              },
+              child: const Center(
+                child: Text('Main menu', style: TextStyle(fontSize: 30)),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

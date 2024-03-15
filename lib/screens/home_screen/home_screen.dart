@@ -5,9 +5,11 @@ import 'package:EmpoweringLearningEdventure/screens/datesheet_screen/datesheet_s
 import 'package:EmpoweringLearningEdventure/screens/fee_screen/fee_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/gallery_screen/gallery_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/login_screen/login_screen.dart';
+import 'package:EmpoweringLearningEdventure/screens/memory_screen/memroy_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/my_profile/my_profile.dart';
 import 'package:EmpoweringLearningEdventure/screens/quiz_screen/quiz_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/color_screen/color_screen.dart';
+import 'package:EmpoweringLearningEdventure/screens/spelling_screen/spell_bee.dart';
 import 'package:EmpoweringLearningEdventure/screens/wordle_screen/game_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/video_screen/video_screen.dart';
 import 'package:flutter/material.dart';
@@ -163,8 +165,8 @@ class HomeScreen extends StatelessWidget {
 
                         HomeCard(
                           onPress: () {
-                            // Navigator.pushNamed(
-                            //     context, GalleryScreen.routeName);
+                            Navigator.pushNamed(
+                                context, SpellBee.routeName);
                           },
                           icon: 'assets/icons/gallery.svg',
                           title: 'Blank Spelling',
@@ -183,9 +185,13 @@ class HomeScreen extends StatelessWidget {
                           title: 'Wordle',
                         ),
                         HomeCard(
-                          onPress: () {},
+                          onPress: () {
+                            //go to Memory Game Screen
+                            Navigator.pushNamed(
+                                context, MemoryScreen.routeName);
+                          },
                           icon: 'assets/icons/timetable.svg',
-                          title: 'Time Table',
+                          title: 'Match Master',
                         ),
                       ],
                     ),
