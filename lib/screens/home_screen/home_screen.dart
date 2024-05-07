@@ -7,6 +7,7 @@ import 'package:EmpoweringLearningEdventure/screens/gallery_screen/gallery_scree
 import 'package:EmpoweringLearningEdventure/screens/login_screen/login_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/memory_screen/memroy_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/my_profile/my_profile.dart';
+import 'package:EmpoweringLearningEdventure/screens/puzzle_screen/puzzle_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/quiz_screen/quiz_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/color_screen/color_screen.dart';
 import 'package:EmpoweringLearningEdventure/screens/spelling_screen/spell_bee.dart';
@@ -99,7 +100,10 @@ class HomeScreen extends StatelessWidget {
                         ),
 
                         HomeCard(
-                          onPress: () {},
+                          onPress: () {
+                            Navigator.pushNamed(
+                                context, PuzzleScreen.routeName);
+                          },
                           icon: 'assets/icons/resume.svg',
                           title: 'Puzzle',
                         ),

@@ -8,7 +8,7 @@ class NoticeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kOtherColor, // Using kOtherColor from constants.dart for background color
       appBar: AppBar(
         title: Text(
           'Notice Panel',
@@ -19,24 +19,37 @@ class NoticeScreen extends StatelessWidget {
         backgroundColor: kPrimaryColor,
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              child: Text(
-                'Important Announcement !!!',
-                style: TextStyle(fontSize: 24, color: Colors.white),
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(kDefaultPadding), // Using kDefaultPadding from constants.dart for consistent padding
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                padding: EdgeInsets.all(kDefaultPadding), // Adjust padding for better spacing
+                color: kSecondaryColor, // Using kSecondaryColor from constants.dart for container color
+                child: Text(
+                  'Important Announcement',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: kTextWhiteColor, // Using kTextWhiteColor from constants.dart for text color
+                  ),
+                ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-              color: Colors.red,
-            ),
-            SizedBox(height: 20), // Adding space between text and image
-            Image(
-              image: AssetImage('assets/images/notice.jpg'),
-              width: 350,
-              height: 350,
-            ),
-          ],
+              SizedBox(height: kDefaultPadding), // Adding space between text and image
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20), // Applying rounded corners to the image
+                  child: Image(
+                    image: AssetImage('assets/images/notice.jpg'),
+                    width: 300,
+                    height: 300,
+                    fit: BoxFit.cover, // Making sure the image covers the container
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
