@@ -21,7 +21,9 @@ class GameData {
   void nextLevel(int timeLeft) {
     targetIndex = Random().nextInt((getGridSize() * getGridSize()) - 1);
     level++;
-    addScore(level * timeLeft);
+    //addScore(level + timeLeft);  // Less aggressive score scaling
+    addScore(10);  // Fixed score increment for each level
+    //addScore(level * timeLeft);
     // score = 0;
     print('level: $level');
   }

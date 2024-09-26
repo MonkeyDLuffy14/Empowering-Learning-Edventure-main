@@ -18,21 +18,34 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor,
+      appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+        elevation: 0, // Removes shadow
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            // Navigate back to the previous screen
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-        child:
-        Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          const Text(
-            "Simple Quiz App",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            const Text(
+              "Simple Quiz App",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
             ),
-          ),
-          _questionWidget(),
-          _answerList(),
-          _nextButton(),
-        ]),
+            _questionWidget(),
+            _answerList(),
+            _nextButton(),
+          ],
+        ),
       ),
     );
   }
@@ -158,16 +171,32 @@ class _QuizScreenState extends State<QuizScreen> {
         title + " | Score is $score",
         style: TextStyle(color: isPassed ? Colors.green : Colors.redAccent),
       ),
-      content: ElevatedButton(
-        child: const Text("Restart"),
-        onPressed: () {
-          Navigator.pop(context);
-          setState(() {
-            currentQuestionIndex = 0;
-            score = 0;
-            selectedAnswer = null;
-          });
-        },
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ElevatedButton(
+            child: const Text("Restart"),
+            onPressed: () {
+              Navigator.pop(context);
+              setState(() {
+                currentQuestionIndex = 0;
+                score = 0;
+                selectedAnswer = null;
+              });
+            },
+          ),
+          const SizedBox(height: 10), // Adds some space between buttons
+          ElevatedButton(
+            child: const Text("Quit"),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white, // Different color for Quit button
+            ),
+            onPressed: () {
+              Navigator.pop(context); // Close the dialog
+              Navigator.pop(context); // Navigate back to the home screen
+            },
+          ),
+        ],
       ),
     );
   }

@@ -40,6 +40,7 @@ class Controller extends ChangeNotifier {
   requestWord({required bool request}) {
     generateWord = request;
     notifyListeners();
+    print('Requesting new word: $generateWord');
   }
 
   updateLetterDropped({required bool dropped}) {
@@ -52,6 +53,7 @@ class Controller extends ChangeNotifier {
     wordsAnswered = 0;
     generateWord = true;
     percentCompleted = 0;
-    print('Resetting controller.');
+    notifyListeners();
+    print('Resetting controller. New word generation enabled.');
   }
 }

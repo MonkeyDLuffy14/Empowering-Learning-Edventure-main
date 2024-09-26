@@ -24,8 +24,10 @@ class _HomePageState extends State<HomePage> {
     _word = _words[r];
     _dropWord = _word;
     _words.removeAt(r);
-    final s = _word.characters.toList()
-      ..shuffle();
+    print('Selected Word: $_word');
+    print('Remaining Words: $_words');
+
+    final s = _word.characters.toList()..shuffle();
     _word = s.join();
     //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
     //     Provider.of<Controller>(context, listen: false)
@@ -56,6 +58,7 @@ class _HomePageState extends State<HomePage> {
       selector: (_, controller) => controller.generateWord,
       builder: (_, generate, __) {
         if (generate) {
+          print('Generating new word: $generate');
           if (_words.isNotEmpty) {
             _generateWord();
           }

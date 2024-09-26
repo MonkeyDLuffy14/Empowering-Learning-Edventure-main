@@ -43,12 +43,10 @@ class MessageBox extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const HomePage()));
               print("Session completed");
             } else {
-              Provider.of<Controller>(context, listen: false)
-                  .requestWord(request: true);
+              Provider.of<Controller>(context, listen: false).requestWord(request: true);
               Navigator.of(context).pop();
               print("Session Active");
             }
-            print("Clicked");
           },
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -59,6 +57,7 @@ class MessageBox extends StatelessWidget {
                     ?.copyWith(fontSize: 30)),
           ),
         )
+
       ],
     );
   }

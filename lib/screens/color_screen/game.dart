@@ -63,6 +63,8 @@ class _GameState extends State<Game> {
       gameData.nextLevel(timeLeft);
       gridSize = gameData.getGridSize();
       timeLeft = 10;
+      timer.cancel();  // Cancel the previous timer
+      startTimer();    // Start a new timer for the next level
     });
     nextColor();
   }
@@ -70,14 +72,18 @@ class _GameState extends State<Game> {
   void endGame() {
     setState(() {
       gameData.endGame();
+      timer.cancel();  // Cancel the timer when the game ends
     });
     gameOver();
   }
 
   void continuePlaying() {
     setState(() {
+      gameData.reset();
+      gameData.score = 0;  // Reset the game data (level, score, etc.)
       gameData.isPlaying = true;
     });
+    timer.cancel();  // Cancel any running timer before restarting
     startTimer();
     nextLevel();
   }
@@ -180,7 +186,7 @@ class _GameState extends State<Game> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Text('Continue ', style: TextStyle(fontSize: 30)),
+                  Text('Restart ', style: TextStyle(fontSize: 30)),
                   Icon(
                     Icons.movie,
                     size: 30,
